@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, textarea, select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            max-width: 200px;
+            margin: 10px 0;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .rating input:checked ~ label {
+            color: gold;
+        }
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: gold;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" required></textarea>
+            
+            <label for="rating">Rating:</label>
+            <div class="">
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">1</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">2</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">3</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">4</label>
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">5</label>
+            </div>
+
+            <label for="options">Options:</label>
+            <select id="options" name="options">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+                <option value="option4">Option 4</option>
+            </select>
+            
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <p><a href="signin.html">Back to Sign In</a> | <a href="timetable.html">Go to Timetable</a></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
