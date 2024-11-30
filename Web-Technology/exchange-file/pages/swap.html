@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="swapForm" action="/save-file" method="post">
+        <label for="path1">Path 1</label>
+        <input type="text" id="path1" name="path1" required>
+        <br>
+        <label for="path2">Path 2</label>
+        <input id="path2" name="path2" required>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('swapForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const path1 = document.getElementById('path1').value;
+            const path2 = document.getElementById('path2').value;
+
+            fetch('/api/swap', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ path1, path2 })
+            })
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => alert('Error: ' + error.message));
+        });
+    </script>
+
+</body>
+
+</html>
